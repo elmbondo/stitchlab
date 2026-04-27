@@ -3,11 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StitchLab</title>
+    <title>StitchLab — AI Crochet Pattern Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>StitchLab</h1>
-    <p>Login page coming soon</p>
+    <div class="login-container">
+        <div class="logo-section">
+            <img src="{{ url_for('static', filename='images/logo-full.png') }}" alt="StitchLab">
+        </div>
+
+        <div class="login-card">
+            <h2>Welcome Back</h2>
+            <p>Sign in to continue creating beautiful patterns</p>
+
+            <a href="/auth/google" class="google-btn">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google">
+                Continue with Google
+            </a>
+
+            <div class="divider">OR</div>
+
+            <a href="/dashboard" class="guest-btn">Explore as Guest</a>
+
+            <p class="terms">
+                By continuing, you agree to our
+                <a href="#">Terms of Service</a> and
+                <a href="#">Privacy Policy</a>
+            </p>
+        </div>
+    </div>
 </body>
 </html>
