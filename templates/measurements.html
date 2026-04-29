@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StitchLab — Measurements</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/measurements.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/logo-full.png') }}" alt="StitchLab" class="nav-logo">
+        </div>
+        <div class="nav-right">
+            <span class="user-avatar">{{ user_initial }}</span>
+            <span class="user-name">{{ user_name }}</span>
+        </div>
+    </nav>
+
+    <div class="measurements-container">
+
+        <!-- Unit Toggle -->
+        <div class="section-card">
+            <h3>Measurement Unit</h3>
+            <div class="unit-toggle">
+                <button class="unit-btn active" id="inchesBtn" onclick="setUnit('inches')">Inches</button>
+                <button class="unit-btn" id="cmBtn" onclick="setUnit('cm')">Centimeters</button>
+            </div>
+        </div>
+
+        <!-- Body Measurements -->
+        <div class="section-card">
+            <h3>Body Measurements</h3>
+            <div class="measurements-grid">
+                <div class="measurement-field">
+                    <label>Bust</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">◯</span>
+                        <input type="number" id="bust" placeholder="0.0" step="1" min="0">
+                        <span class="unit-label" id="bustUnit">in</span>
+                    </div>
+                </div>
+                <div class="measurement-field">
+                    <label>Waist</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">◯</span>
+                        <input type="number" id="waist" placeholder="0.0" step="1" min="0">
+                        <span class="unit-label" id="waistUnit">in</span>
+                    </div>
+                </div>
+                <div class="measurement-field">
+                    <label>Hips</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">◯</span>
+                        <input type="number" id="hips" placeholder="0.0" step="1" min="0">
+                        <span class="unit-label" id="hipsUnit">in</span>
+                    </div>
+                </div>
+                <div class="measurement-field">
+                    <label>Length</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">↕</span>
+                        <input type="number" id="length" placeholder="0.0" step="1" min="0">
+                        <span class="unit-label" id="lengthUnit">in</span>
+                    </div>
+                </div>
+                <div class="measurement-field">
+                    <label>Shoulder Width</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">—</span>
+                        <input type="number" id="shoulder" placeholder="0.0" step="1" min="0">
+                        <span class="unit-label" id="shoulderUnit">in</span>
+                    </div>
+                </div>
+                <div class="measurement-field">
+                    <label>Sleeve Length</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">‹</span>
+                        <input type="number" id="sleeve" placeholder="0.0" step="1" min="0">
+                        <span class="unit-label" id="sleeveUnit">in</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outfit Colours -->
+        <div class="section-card">
+            <h3>Outfit Colors <span class="sub-label">Select up to 3 colors</span></h3>
+            <div class="color-grid">
+                <div class="color-swatch selected" data-color="Dusty Rose" style="background:#C9967A" onclick="toggleColor(this)">
+                    <span class="check">✓</span>
+                </div>
+                <div class="color-swatch" data-color="Sage" style="background:#8B9E7E" onclick="toggleColor(this)"></div>
+                <div class="color-swatch" data-color="Sky Blue" style="background:#A8C4D4" onclick="toggleColor(this)"></div>
+                <div class="color-swatch" data-color="Lavender" style="background:#C4B5D4" onclick="toggleColor(this)"></div>
+                <div class="color-swatch" data-color="Peach" style="background:#F5C4A0" onclick="toggleColor(this)"></div>
+                <div class="color-swatch" data-color="Mint" style="background:#A8D4C4" onclick="toggleColor(this)"></div>
+                <div class="color-swatch" data-color="Coral" style="background:#E8735A" onclick="toggleColor(this)"></div>
+                <div class="color-swatch selected" data-color="Teal" style="background:#4A9B8E" onclick="toggleColor(this)">
+                    <span class="check">✓</span>
+                </div>
+                <div class="color-swatch" data-color="Cream" style="background:#FAF7F2" onclick="toggleColor(this)"></div>
+                <div class="color-swatch" data-color="Black" style="background:#2C2C2C" onclick="toggleColor(this)"></div>
+                <div class="color-swatch" data-color="Burgundy" style="background:#7B2D42" onclick="toggleColor(this)"></div>
+                <div class="color-swatch" data-color="Mustard" style="background:#C4943A" onclick="toggleColor(this)"></div>
+            </div>
+            <div class="selected-colors" id="selectedColors">
+                <span class="selected-label">Selected:</span>
+                <span class="color-tag" style="background:#C9967A">Dusty Rose</span>
+                <span class="color-tag" style="background:#4A9B8E">Teal</span>
+            </div>
+        </div>
+
+        <!-- Yarn & Hook Details -->
+        <div class="section-card">
+            <h3>Yarn & Hook Details</h3>
+            <div class="yarn-grid">
+                <div class="yarn-field">
+                    <label>Yarn Type</label>
+                    <select id="yarnType">
+                        <option>Cotton</option>
+                        <option>Acrylic</option>
+                        <option>Wool</option>
+                        <option>Bamboo</option>
+                        <option>Silk</option>
+                        <option>Alpaca</option>
+                        <option>Mohair</option>
+                        <option>Blend</option>
+                    </select>
+                </div>
+                <div class="yarn-field">
+                    <label>Yarn Size</label>
+                    <select id="yarnSize">
+                        <option>Lace</option>
+                        <option>Fingering</option>
+                        <option>Sport</option>
+                        <option>DK</option>
+                        <option selected>Worsted</option>
+                        <option>Bulky</option>
+                        <option>Super Bulky</option>
+                    </select>
+                </div>
+                <div class="yarn-field">
+                    <label>Hook Size</label>
+                    <select id="hookSize">
+                        <option>2.0mm (B)</option>
+                        <option>2.5mm (C)</option>
+                        <option>3.0mm (D)</option>
+                        <option>3.5mm (E)</option>
+                        <option>4.0mm (G)</option>
+                        <option selected>5.0mm (H)</option>
+                        <option>6.0mm (J)</option>
+                        <option>8.0mm (L)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outfit Preview -->
+        <div class="section-card preview-card">
+            <h3>Outfit Preview</h3>
+            <div class="preview-illustration">
+                <div class="garment-icon" id="garmentIcon">👗</div>
+            </div>
+            <div class="preview-details">
+                <div class="preview-row">
+                    <span>Garment</span>
+                    <span id="previewGarment">Dress</span>
+                </div>
+                <div class="preview-row">
+                    <span>Yarn</span>
+                    <span id="previewYarn">Cotton</span>
+                </div>
+                <div class="preview-row">
+                    <span>Size</span>
+                    <span id="previewSize">Worsted</span>
+                </div>
+                <div class="preview-row">
+                    <span>Hook</span>
+                    <span id="previewHook">5.0mm (H)</span>
+                </div>
+            </div>
+            <button class="generate-btn" onclick="generatePattern()">
+                ✦ Generate Pattern
+            </button>
+            <button class="draft-btn" onclick="saveDraft()">Save as Draft</button>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/measurements.js') }}"></script>
+</body>
+</html>
