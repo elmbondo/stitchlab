@@ -28,7 +28,14 @@ def dashboard():
         return redirect(url_for('index'))
     user_info = google.get("/oauth2/v2/userinfo")
     user = user_info.json()
-    return f"Welcome {user['name']}!"
+    return render_template('upload.html',
+        user_name=user['name'],
+        user_initial=user['name'][0].upper()
+    )
+
+@app.route('/analyse', methods=['POST'])
+def analyse():
+    return {'stitch': 'Double Crochet'}
 
 if __name__ == '__main__':
     app.run(debug=True)

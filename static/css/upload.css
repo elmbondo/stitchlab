@@ -1,0 +1,326 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav-logo {
+    height: 36px;
+    mix-blend-mode: multiply;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+}
+
+.upload-container {
+    max-width: 1100px;
+    margin: 32px auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.section-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.section-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+}
+
+.garment-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pill {
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1.5px solid var(--border);
+    background: white;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pill.active {
+    background: var(--teal);
+    color: white;
+    border-color: var(--teal);
+}
+
+.pill:hover:not(.active) {
+    background: var(--light-gray);
+}
+
+.upload-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.dropzone {
+    border: 2px dashed var(--teal);
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    background: var(--cream);
+    position: relative;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-icon {
+    font-size: 32px;
+    color: var(--teal);
+    margin-bottom: 12px;
+}
+
+.drop-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+}
+
+.drop-sub {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 16px;
+}
+
+.choose-btn {
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+.file-types {
+    font-size: 12px;
+    color: #bbb;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.analyse-btn {
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.analyse-btn:hover {
+    opacity: 0.9;
+}
+
+.analysis-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.analysis-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+}
+
+.analysis-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #bbb;
+}
+
+.clock-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.stitch-detected {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.label {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 4px;
+}
+
+.stitch-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--teal);
+}
+
+.stitch-confirm p {
+    font-size: 14px;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+}
+
+.confirm-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.confirm-yes {
+    flex: 1;
+    padding: 10px;
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.confirm-no {
+    flex: 1;
+    padding: 10px;
+    background: white;
+    color: var(--charcoal);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.comment-box {
+    margin-top: 16px;
+}
+
+.comment-box label {
+    font-size: 13px;
+    color: #888;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.comment-box input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.comment-box input:focus {
+    border-color: var(--teal);
+}
+
+.proceed-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tips-card {
+    display: flex;
+    gap: 12px;
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 20px;
+}
+
+.tips-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+}
+
+.tips-card ul {
+    padding-left: 16px;
+    font-size: 12px;
+    color: #888;
+    line-height: 1.8;
+}
+
+.hidden {
+    display: none !important;
+}

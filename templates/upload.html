@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StitchLab — Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/logo-full.png') }}" alt="StitchLab" class="nav-logo">
+        </div>
+        <div class="nav-right">
+            <span class="user-avatar">{{ user_initial }}</span>
+            <span class="user-name">{{ user_name }}</span>
+        </div>
+    </nav>
+
+    <div class="upload-container">
+        <!-- Garment Type Selector -->
+        <div class="section-card">
+            <h3>Select Garment Type</h3>
+            <div class="garment-pills">
+                <button class="pill active" data-type="dress">Dress</button>
+                <button class="pill" data-type="trousers">Trousers</button>
+                <button class="pill" data-type="shorts">Shorts</button>
+                <button class="pill" data-type="skirt">Skirt</button>
+                <button class="pill" data-type="top">Top</button>
+                <button class="pill" data-type="sweater">Sweater</button>
+                <button class="pill" data-type="cardigan">Cardigan</button>
+                <button class="pill" data-type="scarf">Scarf</button>
+            </div>
+        </div>
+
+        <div class="upload-grid">
+            <!-- Upload Area -->
+            <div class="section-card upload-card">
+                <h3>Upload Reference Image</h3>
+                <div class="dropzone" id="dropzone">
+                    <div class="dropzone-content">
+                        <div class="upload-icon">↑</div>
+                        <p class="drop-text">Drag and drop your image here</p>
+                        <p class="drop-sub">or click to browse</p>
+                        <button class="choose-btn" onclick="document.getElementById('fileInput').click()">
+                            Choose File
+                        </button>
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                        <p class="file-types">Supports: JPG, PNG, WEBP (Max 10MB)</p>
+                    </div>
+                    <img id="preview" class="image-preview hidden" alt="Preview">
+                </div>
+                <button class="analyse-btn hidden" id="analyseBtn">Analyse Image</button>
+            </div>
+
+            <!-- AI Analysis Panel -->
+            <div class="section-card analysis-card">
+                <div class="analysis-header">
+                    <span class="analysis-dot"></span>
+                    <h3>AI Analysis</h3>
+                </div>
+
+                <div class="analysis-empty" id="analysisEmpty">
+                    <div class="clock-icon">🕐</div>
+                    <p>Upload an image to start AI analysis</p>
+                </div>
+
+                <div class="analysis-result hidden" id="analysisResult">
+                    <div class="stitch-detected">
+                        <p class="label">Detected Stitch</p>
+                        <p class="stitch-name" id="stitchName">—</p>
+                    </div>
+                    <div class="stitch-confirm">
+                        <p>Is this correct?</p>
+                        <div class="confirm-btns">
+                            <button class="confirm-yes" id="confirmYes">Yes, looks right</button>
+                            <button class="confirm-no" id="confirmNo">Change stitch</button>
+                        </div>
+                    </div>
+                    <div class="comment-box hidden" id="commentBox">
+                        <label>What stitch would you prefer?</label>
+                        <input type="text" id="stitchInput" placeholder="e.g. Single crochet, Granny square...">
+                    </div>
+                    <button class="proceed-btn hidden" id="proceedBtn">
+                        Continue to Measurements →
+                    </button>
+                </div>
+
+                <!-- Tips -->
+                <div class="tips-card">
+                    <span>ℹ️</span>
+                    <div>
+                        <p class="tips-title">Tips for Best Results</p>
+                        <ul>
+                            <li>Use clear, well-lit photos</li>
+                            <li>Show the garment flat or on a mannequin</li>
+                            <li>Capture close-ups of stitch details</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+</body>
+</html>

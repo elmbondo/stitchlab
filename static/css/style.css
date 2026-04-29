@@ -17,10 +17,16 @@ body {
     background-color: var(--cream);
     font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    cursor: url('/static/images/hook-cursor.png'), auto;
+}
+
+.centered-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: url('/static/images/hook-cursor.png'), auto;
+    min-height: 100vh;
 }
 
 .login-container {
