@@ -48,5 +48,11 @@ def measurements():
         user_initial=user['name'][0].upper()
     )
 
+@app.route('/generating')
+def generating():
+    if not google.authorized:
+        return redirect(url_for('index'))
+    return render_template('generating.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
